@@ -67,7 +67,7 @@ namespace AukcioProjekt
             }
             else if (this.licitekSzama > 0)
             {
-                this.legmagasabbLicit = (int)Math.Round(this.legmagasabbLicit * 1.1);
+                this.legmagasabbLicit = (int)(Math.Round((this.legmagasabbLicit * 1.1)/10, 0) * 10);
             }
             licitekSzama++;
             legutolsoLicitIdeje = DateTime.Now;
@@ -104,7 +104,9 @@ namespace AukcioProjekt
         public override string ToString()
         {
             string s1 = ""+this.festo+": "+this.cim+" ("+this.stilus+")\n";
+            Console.ForegroundColor = ConsoleColor.Red;
             string s2 = (this.elkelt ? "elkelt" : "nem kelt el")+"\n";
+            Console.ResetColor();
             string s3 = this.legmagasabbLicit+"$ - "+this.legutolsoLicitIdeje+" (összesen: "+this.licitekSzama+" db)";
 
             return s1+s2+s3;
