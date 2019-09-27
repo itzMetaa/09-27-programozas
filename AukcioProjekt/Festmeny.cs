@@ -11,10 +11,10 @@ namespace AukcioProjekt
         private string cim;
         private string festo;
         private string stilus;
-        private int licitekSzama = 0;
-        private int legmagasabbLicit = 0;
+        private int licitekSzama;
+        private int legmagasabbLicit;
         private DateTime legutolsoLicitIdeje;
-        private bool elkelt = false;
+        private bool elkelt;
 
         public Festmeny()
         {
@@ -26,17 +26,9 @@ namespace AukcioProjekt
             this.cim = cim;
             this.festo = festo;
             this.stilus = stilus;
-        }
-
-        public Festmeny(string cim, string festo, string stilus, int licitekSzama, int legmagasabbLicit, DateTime legutolsoLicitIdeje, bool elkelt)
-        {
-            this.cim = cim;
-            this.festo = festo;
-            this.stilus = stilus;
-            this.licitekSzama = licitekSzama;
-            this.legmagasabbLicit = legmagasabbLicit;
-            this.legutolsoLicitIdeje = legutolsoLicitIdeje;
-            this.elkelt = elkelt;
+            this.licitekSzama = 0;
+            this.legmagasabbLicit = 0;
+            this.elkelt = false;
         }
 
         public string Festo() {
@@ -84,7 +76,7 @@ namespace AukcioProjekt
             }
             licitekSzama++;
             legutolsoLicitIdeje = DateTime.Now;
-            Console.WriteLine(this.legmagasabbLicit);
+            //Console.WriteLine(this.legmagasabbLicit);
 
         }
 
@@ -104,7 +96,7 @@ namespace AukcioProjekt
             }
             licitekSzama++;
             legutolsoLicitIdeje = DateTime.Now;
-            Console.WriteLine(this.legmagasabbLicit);
+            //Console.WriteLine(this.legmagasabbLicit);
         }
 
         public void Kiir()
@@ -112,6 +104,15 @@ namespace AukcioProjekt
             Console.WriteLine("{0}: {1} ({2})", this.festo, this.cim, this.stilus);
             Console.WriteLine("{0}", this.elkelt? "elkelt" : "nem kelt el");
             Console.WriteLine("{0}$ - {1} (összesen: {2} db)", this.legmagasabbLicit, this.legutolsoLicitIdeje, this.licitekSzama);
+        }
+
+        public override string ToString()
+        {
+            string s1 = ""+this.festo+": "+this.cim+" ("+this.stilus+")\n";
+            string s2 = (this.elkelt ? "elkelt" : "nem kelt el")+"\n";
+            string s3 = this.legmagasabbLicit+"$ - "+this.legutolsoLicitIdeje+" (összesen: "+this.licitekSzama+" db)";
+
+            return s1+s2+s3;
         }
 
     }
