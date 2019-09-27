@@ -64,12 +64,12 @@ namespace AukcioProjekt
             }
             Console.WriteLine("------------\n\n");
 
-            foreach (Festmeny festmenyek in F)
-            {
-                Console.WriteLine(festmenyek);
-            }
+            //foreach (Festmeny festmenyek in F)
+            //{
+            //    Console.WriteLine(festmenyek);
+            //}
        
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 50; i++)
             {
                 int festmenySzam = r.Next(0, F.Count);
 
@@ -79,15 +79,20 @@ namespace AukcioProjekt
                     {
                         case 0:
                             F[festmenySzam].Licit();
+                            Console.WriteLine("\n" + (i+1) + ". Licit: " + F[festmenySzam] + "festményre");
                             break;
                         case 1:
                             F[festmenySzam].Licit(r.Next(0,21));
+                            Console.WriteLine("\n" + (i+1) + ". Licit: " + F[festmenySzam] + "festményre");
                             break;
                     }
-                    switch (r.Next(0, 4))
+                    switch (r.Next(0, 100))
                     {
                         case 0:
                            F[festmenySzam].setElkelt(true);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Elkelt!");
+                            Console.ResetColor();
                             break;
                         default:
                             F[festmenySzam].setElkelt(false);
@@ -96,7 +101,7 @@ namespace AukcioProjekt
                 }
                 else if (F[festmenySzam].Elkelt())
                 {
-                    Console.WriteLine("Ez a festmény elkelt");
+                    
                 }
             }
             Console.WriteLine("------------\n\n");
