@@ -10,8 +10,10 @@ namespace AukcioProjekt
     {
         static void Main(string[] args)
         {
-            Festmeny f = new Festmeny("Jani","Ákos","anya",1,2101,DateTime.Now,false);
+            Festmeny f = new Festmeny("Jani","Ákos","anya",1,100,DateTime.Now,false);
             f.Licit();
+            f.Licit(15);
+            f.Kiir();
             Console.ReadKey();
         }
     }

@@ -77,19 +77,42 @@ namespace AukcioProjekt
             if (this.licitekSzama == 0)
             {
                 this.legmagasabbLicit = 100;
-                licitekSzama++;
-                legutolsoLicitIdeje = DateTime.Now;
             }
-            else if (this.licitekSzama != 0)
+            else if (this.licitekSzama > 0)
             {
-                this.legmagasabbLicit = (int)(this.legmagasabbLicit * 1.1);
-                Console.WriteLine(this.legmagasabbLicit);
+                this.legmagasabbLicit = (int)Math.Round(this.legmagasabbLicit * 1.1);
             }
+            licitekSzama++;
+            legutolsoLicitIdeje = DateTime.Now;
+            Console.WriteLine(this.legmagasabbLicit);
+
         }
 
         public void Licit(int mertek)
         {
-
+            if (this.elkelt == true)
+            {
+                Console.WriteLine("A festmény már elkelt");
+            }
+            if (this.licitekSzama == 0)
+            {
+                this.legmagasabbLicit = 100;
+            }
+            else if (this.licitekSzama > 0)
+            {
+                this.legmagasabbLicit += (int)Math.Round(this.legmagasabbLicit * (mertek / 100.0));
+            }
+            licitekSzama++;
+            legutolsoLicitIdeje = DateTime.Now;
+            Console.WriteLine(this.legmagasabbLicit);
         }
+
+        public void Kiir()
+        {
+            Console.WriteLine("{0}: {1} ({2})", this.festo, this.cim, this.stilus);
+            Console.WriteLine("{0}", this.elkelt? "elkelt" : "nem kelt el");
+            Console.WriteLine("{0}$ - {1} (összesen: {2} db)", this.legmagasabbLicit, this.legutolsoLicitIdeje, this.licitekSzama);
+        }
+
     }
 }
