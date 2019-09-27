@@ -16,11 +16,6 @@ namespace AukcioProjekt
         private DateTime legutolsoLicitIdeje;
         private bool elkelt;
 
-        public Festmeny()
-        {
-
-        }
-
         public Festmeny(string cim, string festo, string stilus)
         {
             this.cim = cim;

@@ -47,11 +47,26 @@ namespace AukcioProjekt
             } while (!kilep);
             //Console.WriteLine("kilépett");
 
+            Festmeny festmeny;
             for (int i = 0; i < N; i++)
             {
+                
                 //Console.WriteLine("asd" + i);
-            }
+                Console.Write("Festő: ");
+                string festo = Console.ReadLine();
+                Console.Write("Cím: ");
+                string cim = Console.ReadLine();
+                Console.Write("Stíéus: ");
+                string stilus = Console.ReadLine();
+                F.Add(festmeny = new Festmeny(cim, festo, stilus));
 
+            }
+            Console.WriteLine("------------\n\n");
+
+            for (int i = 0; i < F.Count; i++)
+            {
+                Console.WriteLine(F[i]);
+            }
 
             Console.ReadKey();
         }
